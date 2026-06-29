@@ -1,13 +1,14 @@
 package simulation;
+import java.util.List;
 
 class Tower
 {
-	private List<Flyable*> observers;
-	public void register(Flyable* p_flyable)
+	private List<Flyable> observers;
+	public void register(Flyable p_flyable)
 	{
 
 	}
-	public void unregister(Flyable* p_flyable)
+	public void unregister(Flyable p_flyable)
 	{
 
 	}

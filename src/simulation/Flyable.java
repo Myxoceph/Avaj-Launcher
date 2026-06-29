@@ -6,7 +6,7 @@ abstract class Flyable
 	{
 		// No body needed for abstract method
 	}
-	public void registerTower(WeatherTower* p_tower);
+	public void registerTower(WeatherTower p_tower)
 	{
 
 	}
