@@ -1,9 +1,10 @@
 package simulation;
 import java.util.List;
+import java.util.ArrayList;
 
 class Tower
 {
-	private List<Flyable> observers;
+	private ArrayList<Flyable> observers = new ArrayList<Flyable>();
 	public void register(Flyable p_flyable)
 	{
 

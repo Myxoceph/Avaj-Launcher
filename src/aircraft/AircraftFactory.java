@@ -1,4 +1,5 @@
 package aircraft;
+import simulation.Flyable;
 
 public class AircraftFactory
 {

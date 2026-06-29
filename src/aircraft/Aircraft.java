@@ -1,6 +1,7 @@
 package aircraft;
+import simulation.Flyable;
 
-class Aircraft 
+abstract class Aircraft extends Flyable
 {
 	protected long id;
 	protected String name;
