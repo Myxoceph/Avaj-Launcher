@@ -2,7 +2,7 @@ package simulation;
 import java.util.List;
 import java.util.ArrayList;
 
-class Tower
+public class Tower
 {
 	private ArrayList<Flyable> observers = new ArrayList<Flyable>();
 	public void register(Flyable p_flyable)

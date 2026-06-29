@@ -7,7 +7,7 @@ public class AircraftFactory
 
 	Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates)
 	{
-
+		return null;
 	}
 	public static AircraftFactory getFactory() // not implemented in UML diagram but needed to get the aircraftFactory instance
 	{
