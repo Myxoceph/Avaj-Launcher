@@ -1,4 +1,4 @@
-public class avaj
+public class Main
 {
 	public static void main(String[] args)
 	{
@@ -116,5 +116,40 @@ class Baloon extends Aircraft
 	public void updateConditions()
 	{
 
+	}
+}
+
+public class WeatherProvider
+{
+	private static WeatherProvider weatherProvider = new WeatherProvider();
+	private static String[] weather = {"SUN", "RAIN", "FOG", "SNOW"};
+
+	private WeatherProvider()
+	{
+
+	}
+
+	public static WeatherProvider getProvider() // not implemented in UML diagram but needed to get the weatherProvider instance
+	{
+		return weatherProvider;
+	}
+
+	public String getCurrentWeather(Coordinates p_coordinates)
+	{
+
+	}
+}
+
+public class AircraftFactory
+{
+	private static AircraftFactory aircraftFactory = new AircraftFactory();
+
+	Flyable newAircraft(string p_type, string p_name, Coordinates p_coordinates)
+	{
+
+	}
+	public static AircraftFactory getFactory() // not implemented in UML diagram but needed to get the aircraftFactory instance
+	{
+		return aircraftFactory;
 	}
 }
