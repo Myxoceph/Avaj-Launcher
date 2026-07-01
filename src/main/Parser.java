@@ -1,8 +1,11 @@
 package main;
+
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import aircraft.AircraftFactory;
 import simulation.Flyable;
@@ -12,11 +15,23 @@ import exception.InvalidScenarioException;
 public class Parser
 {
 	private String scenarioFile;
+	private int simulationCycles;
+	private List<Flyable> aircraftList = new ArrayList<>();
 
 	Parser(String scenarioFile)
 	{
 		this.scenarioFile = scenarioFile;
 		checkFile();
+	}
+
+	public int getSimulationCycles()
+	{
+		return simulationCycles;
+	}
+
+	public List<Flyable> getAircraftList()
+	{
+		return aircraftList;
 	}
 
 	private void checkFile()
@@ -72,14 +87,13 @@ public class Parser
 			throw new InvalidScenarioException("Error reading scenario file: " + e.getMessage());
 		}
 
-
 	}
 
 	public void parse(String type, String name, int longitude, int latitude, int height)
 	{
 		Coordinates coordinates = new Coordinates(longitude, latitude, height);
-		Flyable flyable = AircraftFactory.newAircraft(type, name, coordinates);
-
+		Flyable aircraft = AircraftFactory.getAircraftFactory().newAircraft(type, name, coordinates);
+		aircraftList.add(aircraft);
 	}
 
 }

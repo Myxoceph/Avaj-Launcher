@@ -1,4 +1,5 @@
 package simulation;
+
 import weather.WeatherTower;
 
 public abstract class Flyable

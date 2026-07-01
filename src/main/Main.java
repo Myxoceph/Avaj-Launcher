@@ -1,4 +1,9 @@
 package main;
+
+import java.util.List;
+
+import simulation.Flyable;
+import weather.WeatherTower;
 import exception.InvalidScenarioException;
 
 public class Main
@@ -13,6 +18,15 @@ public class Main
 		try
 		{
 			Parser parser = new Parser(args[0]);
+			int simulationCycles = parser.getSimulationCycles();
+			List<Flyable> aircraftList = parser.getAircraftList();
+			WeatherTower weatherTower = new WeatherTower();
+
+			for (Flyable aircraft : aircraftList)
+				aircraft.registerTower(weatherTower);
+
+			for (int i = 0; i < simulationCycles; i++)
+				weatherTower.changeWeather();
 		}
 		catch (InvalidScenarioException e)
 		{

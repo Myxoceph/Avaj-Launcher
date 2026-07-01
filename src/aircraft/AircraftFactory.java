@@ -1,4 +1,5 @@
 package aircraft;
+
 import simulation.Flyable;
 
 public class AircraftFactory
@@ -16,7 +17,7 @@ public class AircraftFactory
 		return aircraftFactory;
 	}
 
-	Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates)
+	public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates)
 	{
 		long nextId = ++idCounter; 
 

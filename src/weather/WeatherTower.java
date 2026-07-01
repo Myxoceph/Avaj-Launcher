@@ -1,4 +1,5 @@
 package weather;
+
 import aircraft.Coordinates;
 import simulation.Tower;
 

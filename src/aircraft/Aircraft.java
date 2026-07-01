@@ -1,4 +1,5 @@
 package aircraft;
+
 import simulation.Flyable;
 
 abstract class Aircraft extends Flyable
