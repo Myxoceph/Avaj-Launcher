@@ -24,6 +24,6 @@ hs_err_pid*
 replay_pid*
 
 global.puml
-sources.txt
+*.txt
 bin
-scenario.txt
+

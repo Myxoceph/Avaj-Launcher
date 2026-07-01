@@ -8,8 +8,7 @@ class Helicopter extends Aircraft
 	}
 	public void updateConditions()
 	{
-		weather.WeatherTower weatherTower = new weather.WeatherTower();
-		String weather = weatherTower.getWeather(this.coordinates);
+		String weather = this.weatherTower.getWeather(this.coordinates);
 		if (weather.equals("SUN"))
 		{
 			this.coordinates.setLongitude(this.coordinates.getLongitude() + 10);
@@ -30,6 +29,11 @@ class Helicopter extends Aircraft
 		{
 			this.coordinates.setHeight(this.coordinates.getHeight() - 12);
 			System.out.printf("Helicopter#%s(%d): It's snowing.\n", this.name, this.id);
+			if (this.coordinates.getHeight() <= 0)
+			{
+				System.out.printf("Helicopter#%s(%d): Landing due to low altitude.\n", this.name, this.id);
+				this.weatherTower.unregister(this);
+			}
 		}
 	}
 }
