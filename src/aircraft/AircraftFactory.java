@@ -4,13 +4,27 @@ import simulation.Flyable;
 public class AircraftFactory
 {
 	private static AircraftFactory aircraftFactory = new AircraftFactory();
+	private static long idCounter = 0;
+
+	private AircraftFactory()
+	{
+		
+	}
+
+	public static AircraftFactory getAircraftFactory()
+	{
+		return aircraftFactory;
+	}
 
 	Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates)
 	{
+		long nextId = ++idCounter; 
+
+		switch (p_type.toLowerCase()) {
+			case "helicopter" -> new Helicopter(nextId, p_name, p_coordinates);
+			case "jetplane" -> new JetPlane(nextId, p_name, p_coordinates);
+			case "balloon" -> new Balloon(nextId, p_name, p_coordinates);
+		}
 		return null;
-	}
-	public static AircraftFactory getFactory() // not implemented in UML diagram but needed to get the aircraftFactory instance
-	{
-		return aircraftFactory;
 	}
 }
