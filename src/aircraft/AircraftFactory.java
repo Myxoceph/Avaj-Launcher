@@ -21,11 +21,11 @@ public class AircraftFactory
 	{
 		long nextId = ++idCounter; 
 
-		switch (p_type.toLowerCase()) {
+		return switch (p_type.toLowerCase()) {
 			case "helicopter" -> new Helicopter(nextId, p_name, p_coordinates);
 			case "jetplane" -> new JetPlane(nextId, p_name, p_coordinates);
 			case "balloon" -> new Balloon(nextId, p_name, p_coordinates);
-		}
-		return null;
+			default -> throw new IllegalArgumentException("Invalid aircraft type: " + p_type);
+		};
 	}
 }

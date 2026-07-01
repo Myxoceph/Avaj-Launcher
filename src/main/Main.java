@@ -32,5 +32,9 @@ public class Main
 		{
 			System.out.println("Error: " + e.getMessage());
 		}
+		catch (Exception e)
+		{
+			System.out.println("An unexpected error occurred: " + e.getMessage());
+		}
 	}
 }
