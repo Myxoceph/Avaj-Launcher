@@ -1,5 +1,7 @@
 package weather;
 
+import java.util.Random;
+
 import aircraft.Coordinates;
 
 public class WeatherProvider
@@ -19,6 +21,11 @@ public class WeatherProvider
 
 	public String getCurrentWeather(Coordinates p_coordinates)
 	{
-		return weather[(p_coordinates.getLongitude() + p_coordinates.getLatitude() + p_coordinates.getHeight()) % 4];
+		long seed = (long) p_coordinates.getLongitude() * 31 
+				+ (long) p_coordinates.getLatitude() * 17 
+				+ (long) p_coordinates.getHeight() * 13;
+
+		Random random = new Random(seed);
+		return weather[random.nextInt(4)];
 	}
 }

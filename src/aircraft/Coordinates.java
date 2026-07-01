@@ -6,7 +6,7 @@ public class Coordinates
 	private int latitude;
 	private int height;
 
-	public Coordinates(int p_longitude, int p_latitude, int p_height) // Constructor but fancy. Its called Package-Private Constructor. It is only accessible within the same package.
+	public Coordinates(int p_longitude, int p_latitude, int p_height)
 	{
 		this.longitude = p_longitude;
 		this.latitude = p_latitude;
