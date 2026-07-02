@@ -20,19 +20,19 @@ class Helicopter extends Aircraft
 			case "SUN":
 				newLongitude += 10;
 				newHeight += 2;
-				System.out.printf("%s: This is hot.\n", this);
+				this.conditionMessage("SUN", this);
 				break;
 			case "RAIN":
 				newLongitude += 5;
-				System.out.printf("%s: Rain is pouring down, hope the rotors don't fail!\n", this);
+				this.conditionMessage("RAIN", this);
 				break;
 			case "FOG":
 				newLongitude += 1;
-				System.out.printf("%s: Can't see the ground, relying on instruments!\n", this);
+				this.conditionMessage("FOG", this);
 				break;
 			case "SNOW":
 				newHeight -= 12;
-				System.out.printf("%s: My rotor is going to freeze!\n", this);
+				this.conditionMessage("SNOW", this);
 				break;
 		}
 
@@ -40,9 +40,8 @@ class Helicopter extends Aircraft
 
 		if (this.coordinates.getHeight() <= 0)
 		{
-			System.out.printf("%s landing.\n", this);
+			this.conditionMessage("LANDING", this);
 			this.weatherTower.unregister(this);
 		}
 	}
 }
-

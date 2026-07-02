@@ -1,4 +1,4 @@
-package main;
+package utils;
 
 import java.io.File;
 import java.io.BufferedReader;
@@ -18,7 +18,7 @@ public class Parser
 	private int simulationCycles;
 	private List<Flyable> aircraftList = new ArrayList<>();
 
-	Parser(String scenarioFile)
+	public Parser(String scenarioFile)
 	{
 		this.scenarioFile = scenarioFile;
 		checkFile();

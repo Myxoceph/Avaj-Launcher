@@ -5,6 +5,8 @@ import java.io.PrintStream;
 import java.io.File;
 
 import simulation.Flyable;
+import utils.Parser;
+import utils.Colors;
 import weather.WeatherTower;
 import exception.InvalidScenarioException;
 
@@ -14,7 +16,7 @@ public class Main
 	{
 		if (args.length != 1)
 		{
-			System.out.println("Error: Invalid number of arguments. Usage: java -cp bin main.Main <scenario_file>");
+			System.out.println(Colors.RED + "Error: " + Colors.WHITE + "Invalid number of arguments. " + Colors.GREEN + "Usage: java -cp bin main.Main <scenario_file>" + Colors.RESET);
 			return;
 		}
 
@@ -40,13 +42,12 @@ public class Main
 		catch (InvalidScenarioException e)
 		{
 			System.setOut(originalOut);
-			System.out.println("Error: " + e.getMessage());
+			System.out.println(Colors.RED + "Error: " + Colors.WHITE + e.getMessage() + Colors.RESET);
 		}
 		catch (Exception e)
 		{
 			System.setOut(originalOut);
-			System.out.println("An unexpected error occurred: " + e.getMessage());
+			System.out.println(Colors.RED + "An unexpected error occurred: " + Colors.WHITE + e.getMessage() + Colors.RESET);
 		}
 	}
 }
-

@@ -20,19 +20,19 @@ class JetPlane extends Aircraft
 			case "SUN":
 				newLatitude += 10;
 				newHeight += 2;
-				System.out.printf("%s: Full throttle under the beautiful clear sky.\n", this);
+				this.conditionMessage("SUN", this);
 				break;
 			case "RAIN":
 				newLatitude += 5;
-				System.out.printf("%s: It's raining. Better watch out for lightings.\n", this);
+				this.conditionMessage("RAIN", this);
 				break;
 			case "FOG":
 				newLatitude += 1;
-				System.out.printf("%s: Foggy conditions, visibility is low.\n", this);
+				this.conditionMessage("FOG", this);
 				break;
 			case "SNOW":
 				newHeight -= 7;
-				System.out.printf("%s: OMG! Winter is coming!\n", this);
+				this.conditionMessage("SNOW", this);
 				break;
 		}
 
@@ -40,9 +40,8 @@ class JetPlane extends Aircraft
 
 		if (this.coordinates.getHeight() <= 0)
 		{
-			System.out.printf("%s landing.\n", this);
+			this.conditionMessage("LANDING", this);
 			this.weatherTower.unregister(this);
 		}
 	}
 }
-

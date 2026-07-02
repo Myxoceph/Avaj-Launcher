@@ -20,19 +20,19 @@ class Balloon extends Aircraft
 			case "SUN":
 				newLongitude += 2;
 				newHeight += 4;
-				System.out.printf("%s: Let's enjoy the good weather and take some pics.\n", this);
+				this.conditionMessage("SUN", this);
 				break;
 			case "RAIN":
 				newHeight -= 5;
-				System.out.printf("%s: Damn you rain! You messed up my balloon.\n", this);
+				this.conditionMessage("RAIN", this);
 				break;
 			case "FOG":
 				newHeight -= 3;
-				System.out.printf("%s: Fog everywhere, we are drifting blindly.\n", this);
+				this.conditionMessage("FOG", this);
 				break;
 			case "SNOW":
 				newHeight -= 15;
-				System.out.printf("%s: It's snowing. We're gonna crash.\n", this);
+				this.conditionMessage("SNOW", this);
 				break;
 		}
 
@@ -40,9 +40,8 @@ class Balloon extends Aircraft
 
 		if (this.coordinates.getHeight() <= 0)
 		{
-			System.out.printf("%s landing.\n", this);
+			this.conditionMessage("LANDING", this);
 			this.weatherTower.unregister(this);
 		}
 	}
 }
-

@@ -14,7 +14,7 @@ public class WeatherProvider
 
 	}
 
-	public static WeatherProvider getProvider() // not implemented in UML diagram but needed to get the weatherProvider instance
+	public static WeatherProvider getProvider()
 	{
 		return weatherProvider;
 	}
