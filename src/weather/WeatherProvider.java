@@ -25,6 +25,12 @@ public class WeatherProvider
 				+ (long) p_coordinates.getLatitude() * 17 
 				+ (long) p_coordinates.getHeight() * 13;
 
+		seed ^= (seed >>> 33);
+		seed *= 0xff51afd7ed558ccdL;
+		seed ^= (seed >>> 33);
+		seed *= 0xc4ceb9fe1a85ec53L;
+		seed ^= (seed >>> 33);
+
 		Random random = new Random(seed);
 		return weather[random.nextInt(4)];
 	}

@@ -6,34 +6,43 @@ class JetPlane extends Aircraft
 	{
 		super(p_id, p_name, p_coordinate);
 	}
+
+	@Override
 	public void updateConditions()
 	{
 		String weather = this.weatherTower.getWeather(this.coordinates);
-		if (weather.equals("SUN"))
+		int newLongitude = this.coordinates.getLongitude();
+		int newLatitude = this.coordinates.getLatitude();
+		int newHeight = this.coordinates.getHeight();
+
+		switch (weather)
 		{
-			this.coordinates.setLatitude(this.coordinates.getLatitude() + 10);
-			this.coordinates.setHeight(this.coordinates.getHeight() + 2);
-			System.out.printf("JetPlane#%s(%d): It's sunny.\n", this.name, this.id);
+			case "SUN":
+				newLatitude += 10;
+				newHeight += 2;
+				System.out.printf("%s: Full throttle under the beautiful clear sky.\n", this);
+				break;
+			case "RAIN":
+				newLatitude += 5;
+				System.out.printf("%s: It's raining. Better watch out for lightings.\n", this);
+				break;
+			case "FOG":
+				newLatitude += 1;
+				System.out.printf("%s: Foggy conditions, visibility is low.\n", this);
+				break;
+			case "SNOW":
+				newHeight -= 7;
+				System.out.printf("%s: OMG! Winter is coming!\n", this);
+				break;
 		}
-		else if (weather.equals("RAIN"))
+
+		this.coordinates = new Coordinates(newLongitude, newLatitude, newHeight);
+
+		if (this.coordinates.getHeight() <= 0)
 		{
-			this.coordinates.setLatitude(this.coordinates.getLatitude() + 5);
-			System.out.printf("JetPlane#%s(%d): It's raining.\n", this.name, this.id);
-		}
-		else if (weather.equals("FOG"))
-		{
-			this.coordinates.setLatitude(this.coordinates.getLatitude() + 1);
-			System.out.printf("JetPlane#%s(%d): It's foggy.\n", this.name, this.id);
-		}
-		else if (weather.equals("SNOW"))
-		{
-			this.coordinates.setHeight(this.coordinates.getHeight() - 7);
-			System.out.printf("JetPlane#%s(%d): It's snowing.\n", this.name, this.id);
-			if (this.coordinates.getHeight() <= 0)
-			{
-				System.out.printf("JetPlane#%s(%d): Landing due to low altitude.\n", this.name, this.id);
-				this.weatherTower.unregister(this);
-			}
+			System.out.printf("%s landing.\n", this);
+			this.weatherTower.unregister(this);
 		}
 	}
 }
+

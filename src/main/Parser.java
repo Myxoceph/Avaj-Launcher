@@ -49,7 +49,14 @@ public class Parser
 			line = reader.readLine();
 			if (line == null || line.trim().isEmpty() || !line.trim().matches("\\d+"))
 				throw new InvalidScenarioException("First line of scenario file must be a positive integer representing the number of simulation cycles.");
-			simulationCycles = Integer.parseInt(line.trim());
+			try
+			{
+				simulationCycles = Integer.parseInt(line.trim());
+			}
+			catch (NumberFormatException e)
+			{
+				throw new InvalidScenarioException("Simulation cycles count is too large.");
+			}
 			if (simulationCycles <= 0 || simulationCycles > 1000)
 				throw new InvalidScenarioException("Number of simulation cycles must be a positive integer less than or equal to 1000.");
 			while ((line = reader.readLine()) != null)
@@ -91,7 +98,7 @@ public class Parser
 
 	public void parse(String type, String name, int longitude, int latitude, int height)
 	{
-		Coordinates coordinates = new Coordinates(longitude, latitude, height);
+		Coordinates coordinates = Coordinates.create(longitude, latitude, height);
 		Flyable aircraft = AircraftFactory.getAircraftFactory().newAircraft(type, name, coordinates);
 		if (aircraft == null)
 			throw new InvalidScenarioException("Failed to create aircraft of type: " + type);
